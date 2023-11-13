@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head',{
+    title: "Agregar Curso"
+}) %>
+
+  <body class="form">
+    <!-- encabezado -->
+    <%- include('../partials/headerAdmin') %>
+
+      <!-- principal -->
+      <main class="form__main">
+     
+     <h2>Formulario: Agregar Curso</h2>
+     <hr>
+     <div class="row">
+        <div class="col-12 col-md-10 col-lg-8 mx-auto">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <form action="" class="row" method="POST" enctype="multipart/form-data">
+                        <div class="col-12 col-md-6 mb-3">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" class="form-control <%= locals.errors && errors.title ? 'is-invalid' : null%>" id="title" placeholder="Título del curso" name="title" value="<%= locals.old && old.title ? old.title : null %>">
+                            <small class="text-danger ms-2"><%= locals.errors && errors.title ? errors.title.msg : null %></small>
+                          </div>
+                          <div class="col-6 col-md-3 mb-3">
+                            <label for="price" class="form-label">Precio</label>
+                            <input type="number" class="form-control  <%= locals.errors && errors.price ? 'is-invalid' : null%>" id="price" name="price" value="<%= locals.old && old.price ? old.price : null %>">
+                            <small class="text-danger ms-2"><%= locals.errors && errors.price ? errors.price.msg : null %></small>
+
+                          </div>
+                          <div class="col-6 col-md-3 mb-3">
+                            <label for="discount" class="form-label">Descuento</label>
+                            <input type="number" class="form-control  <%= locals.errors && errors.discount ? 'is-invalid' : null%>" id="discount" name="discount" value="<%= locals.old && old.discount ? old.discount : null %>">
+                            <small class="text-danger ms-2"><%= locals.errors && errors.discount ? errors.discount.msg : null %></small>
+
+                          </div>
+                          <div class="col-12 col-md-6 mb-3">
+                            <label for="chef" class="form-label">Chef</label>
+                            <select name="chef" id="chef" class="form-control <%= locals.errors && errors.chef ? 'is-invalid' : null%>">
+                                <option value="" selected hidden>Seleccione...</option>
+                                <% chefs.forEach(({name, id}) => { %>
+                                 <option value="<%= id %>" <%= locals.old && old.chef && +old.chef === id ? 'selected' : null %>><%= name %></option>
+                                <% }) %>
+                            </select>
+                            <small class="text-danger ms-2"><%= locals.errors && errors.chef ? errors.chef.msg : null %></small>
+
+                          </div>
+                          <div class="col-12 col-md-6 mb-3">
+                            <label for="category" class="form-label">Categoría</label>
+                            <select name="category" id="category" class="form-control <%= locals.errors && errors.category ? 'is-invalid' : null%>">
+                                <option value="" selected hidden>Seleccione...</option>
+                                <% categories.forEach(({name, id}) => { %>
+                                  <option value="<%= id %>" <%= locals.old && old.category && +old.category === id ? 'selected' : null %>><%= name %></option>
+                                 <% }) %>
+                            </select>
+                            <small class="text-danger ms-2"><%= locals.errors && errors.category ? errors.category.msg : null %></small>
+
+                          </div>
+                          <div class="col-12 mb-3">
+                            <label for="description" class="form-label">Descripción</label>
+                            <textarea class="form-control  <%= locals.errors && errors.description ? 'is-invalid' : null%>" id="description" rows="3" name="description"><%= locals.old && old.description ? old.description : null %></textarea>
+                            <small class="text-danger ms-2"><%= locals.errors && errors.description ? errors.description.msg : null %></small>
+                          </div>
+                          <div class="col-12 mb-3">
+                            <div class="d-flex justify-content-around">
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" name="free" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault">Gratuito</label>
+                              </div>
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" name="visible" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                                <label class="form-check-label" for="flexSwitchCheckChecked">Visible</label>
+                              </div>
+                            </div>
+
+                          </div>
+                       
+                        
+                          <div class="col-9 mb-3">
+                            <label for="images" class="form-label">Imagenes</label>
+                            <input type="file" class="form-control" id="images" name="images" multiple/>
+                            <small class="text-danger ms-2"><%= locals.errors && errors.images ? errors.images.msg : null %></small>
+                          </div>
+
+                          <div class="d-flex justify-content-end">
+                            <button type="submit" class="btn btn-dark">Crear curso</button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+     </div>
+
+      </main>
+      <!-- pie de pagina -->
+
+
+
+        <%- include('../partials/scripts') %>
+
+
+  </body>
+
+</html>

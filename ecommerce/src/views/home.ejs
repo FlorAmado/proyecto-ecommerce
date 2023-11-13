@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head') %>
+
+  <body class="home">
+    <!-- encabezado -->
+    <%- include('./partials/header') %>
+
+      <!-- principal -->
+      <main class="home__main">
+        <!-- banner -->
+        <section class="home__main__section--banner">
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="/images/img-banner.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/images/img-banner2.jpeg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="/images/img-banner3.jpeg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </section>
+        <!-- productos -->
+        <h2>Ultimos agregados</h2>
+        <hr>
+        <section class="home__main__section--productos">
+               <!-- producto -->
+               <% newCourses.forEach(({title,description,images,id}) => { %>
+                <%- include('./partials/courseArticle',{
+                  title,
+                  images,
+                  id,
+                  sticker: 'img-nuevo.png'
+                }) %> 
+               <% }) %>
+        </section>
+        <h2>Ofertas</h2>
+        <hr>
+        <section class="home__main__section--productos">
+               <!-- producto -->
+               <% saleCourses.forEach(({title,description,images,id}) => { %>
+                <%- include('./partials/courseArticle',{
+                  title,
+                  images,
+                  id,
+                  sticker: 'img-descuento.png'
+                }) %> 
+               <% }) %>
+        </section>
+        <section class="home__main__section--courses">
+          <div class="glider-contain">
+            <div class="glider">
+              <% courses.forEach(({title,images,id}) => { %>
+                <a href="/courses/detail/<%= id %>">
+                  <div class="card carousel-courses-item" style="height: 40vh;">
+                    <img src="/images/courses/<%= images.length ? images[0].name : 'not-image.png' %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title text-dark"><%= title %></h5>
+                    </div>
+                  </div>
+                </a>
+              <% }) %>
+             
+            </div>
+
+            <button aria-label="Previous" class="glider-prev">«</button>
+            <button aria-label="Next" class="glider-next">»</button>
+            <div role="tablist" class="dots"></div>
+          </div>
+        </section>
+   <!-- botón de whatsapp -->
+
+   <%- include('./partials/whatsApp') %>
+      </main>
+      <!-- pie de pagina -->
+
+      <%- include('./partials/footer') %>
+
+
+        <%- include('./partials/scripts') %>
+
+          <script src="/javascripts/home.js"></script>
+
+  </body>
+
+</html>
