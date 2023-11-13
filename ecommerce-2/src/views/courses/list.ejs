@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head') %>
+
+  <body class="home" data-idUser="<%= locals.userLogin?.id %>">
+    <!-- encabezado -->
+    <%- include('../partials/header') %>
+
+      <!-- principal -->
+      <main class="home__main" >
+        <div class="d-flex align-items-start gap-2 justify-content-center">
+          <%- include('../partials/paginator') %>
+            <%- include('../partials/selectLimit') %>
+        </div>
+        <!-- productos -->
+        <section class="home__main__section--productos" id="container-courses-card">
+        </section>
+        <!-- botón de whatsapp -->
+
+        <%- include('../partials/whatsApp') %>
+
+      </main>
+      <!-- pie de pagina -->
+
+      <%- include('../partials/footer') %>
+
+
+        <%- include('../partials/scripts') %>
+
+          <script src="/javascripts/home.js"></script>
+          <script src="/javascripts/paginator.js"></script>
+
+  </body>
+
+</html>

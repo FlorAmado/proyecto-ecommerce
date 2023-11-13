@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('../partials/head') %>
+
+  <body class="home">
+    <!-- encabezado -->
+    <%- include('../partials/header') %>
+
+      <!-- principal -->
+      <main class="login__main">
+        <div class="row mb-5">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h5 class="card-title">Login de Usuario</h5>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" class="row">
+                            <div class="col-12 mb-3">
+                                <label for="email" class="form-label">Correo electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                                <small class="text-danger ms-2"><%= (locals.errors && errors.email) && errors.email.msg %></small>
+                              </div>
+                              <div class="col-12 mb-3">
+                                <label for="password" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                                <small class="text-danger ms-2"><%= (locals.errors && errors.password) && errors.password.msg %></small>
+                              </div>
+                              <div class="col-12 mb-3">
+                                <div class="d-flex align-items-center justify-content-around">
+                                  <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                      Recordarme
+                                    </label>
+                                  </div>
+                                  <button type="submit" class="buttons buttons__primary">Ingresar</button>
+                                  <a href="/auth/login/google" class="btn btn-danger">Login Google</a>
+                                  <a href="/auth/login/facebook" class="btn btn-primary">Login Facebook</a>
+                                </div>
+                              </div>
+                        </form>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+      </main>
+
+
+      <%- include('../partials/footer') %>
+
+
+        <%- include('../partials/scripts') %>
+
+          <script src="/javascripts/home.js"></script>
+
+  </body>
+
+</html>

@@ -1,0 +1,46 @@
+  <header class="header">
+
+    <a href="/"> <img id="logo" class="header__logo" src="/images/logo.jpg" alt=""></a>
+
+    <button class="header__hamburger" type="button" onclick="document.getElementById('nav').hidden = !document.getElementById('nav').hidden">
+      <i class="fas fa-bars"></i>
+    </button>
+    <nav class="header__nav" id="nav">
+      <ul class="header__nav--menu">
+        <li>
+          <a href="/courses/list">cursos</a>
+        </li>
+        <li>
+          <a href="/courses/search">buscar</a>
+        </li>
+      </ul>
+      <ul class="header__nav--user">
+        <% if (locals.userLogin) { %>
+          <% if (userLogin.rol === 1) { %>
+            <li>
+              <a href="/admin">Dashboard</a>
+            </li>
+          <% } %>
+          <li>
+            <a href="/users/profile">Hola, <%= userLogin.name %></a>
+          </li>
+          <li>
+            <a href="/users/logout">Salir</a>
+          </li>
+          <li class="list-cart">
+            <a href="/users/cart" title="Carrito"><i class="fas fa-shopping-cart"></i></a>
+          </li>
+          <li class="list-favorite">
+            <a href="/users/favorites" title="Favoritos"><i class="fas fa-star-half-alt"></i></a>
+          </li>
+        <% }else{ %>
+        <li>
+          <a href="/users/register">registrar</a>
+        </li>
+        <li>
+          <a href="/users/login">ingresar</a>
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>
